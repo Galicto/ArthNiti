@@ -2,8 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
-import * as THREE from "three";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, Check } from "lucide-react";
 import PhoneShowcase from "@/components/PhoneShowcase";
 import Preloader from "@/components/Preloader";
 import Hero3D from "@/components/Hero3D";
@@ -61,6 +60,24 @@ export default function Home() {
           }
         );
       }
+      
+      const revealsLeft = section.querySelectorAll(".reveal-left");
+      revealsLeft.forEach((el) => {
+        gsap.fromTo(
+          el,
+          { x: -50, opacity: 0 },
+          { scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none reverse" }, x: 0, opacity: 1, duration: 1, ease: "power3.out" }
+        );
+      });
+
+      const revealsRight = section.querySelectorAll(".reveal-right");
+      revealsRight.forEach((el) => {
+        gsap.fromTo(
+          el,
+          { x: 50, opacity: 0 },
+          { scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none reverse" }, x: 0, opacity: 1, duration: 1, ease: "power3.out" }
+        );
+      });
 
       // Parallax for feature icons / AI logo
       const parallax = section.querySelectorAll(".feature-icon, .ai-logo");
@@ -354,15 +371,16 @@ export default function Home() {
               </div>
             </div>
 
+            <PhoneShowcase />
+
             {/* Hero Content */}
-            <div className="hero-content">
+            <div className="hero-content" style={{ marginTop: "-60px" }}>
               <div className="hero-badge">AI-Powered Financial Intelligence</div>
               <h1>
-                <span className="word hero-gradient">ArthNiti.</span>
-                <br />
                 <span className="word">Turning</span>{" "}
-                <span className="word">Financial</span>{" "}
+                <span className="word hero-gradient">Financial</span>{" "}
                 <span className="word">Data</span>{" "}
+                <br />
                 <span className="word">Into</span>{" "}
                 <span className="word">Financial</span>{" "}
                 <span className="word">Decisions.</span>
@@ -373,15 +391,10 @@ export default function Home() {
               </p>
               <div className="hero-buttons">
                 <a href="#start" className="btn btn-primary btn-magnetic" onMouseEnter={handleBtnEnter} onMouseLeave={handleBtnLeave}>
-                  Let&apos;s Start
-                </a>
-                <a href="#features" className="btn btn-secondary btn-magnetic" onMouseEnter={handleBtnEnter} onMouseLeave={handleBtnLeave}>
-                  See How It Works
+                  Let&apos;s Start →
                 </a>
               </div>
             </div>
-
-            <PhoneShowcase />
 
             {/* Stock Ticker */}
             <div className="stock-ticker">
@@ -414,19 +427,134 @@ export default function Home() {
           {/* ── FEATURES ── */}
           <section className="features" id="features">
             <div className="section-header reveal">
-              <div className="section-label">Features</div>
-              <h2 className="section-title">Everything you need for financial success</h2>
+              <h2 className="section-title">Everything You Need For Wealth</h2>
             </div>
-            <div className="features-grid">
+
+            <div className="features-showcase">
+              {/* Feature 1 */}
+              <div className="feature-row">
+                <div className="feature-visual reveal-left">
+                  <div className="visual-glow" />
+                  <Image src="/phone1_clear.png" alt="AI Financial Copilot" width={340} height={680} className="feature-phone" />
+                </div>
+                <div className="feature-content reveal-right">
+                  <h3 className="feature-heading">1️⃣ AI Financial Copilot</h3>
+                  <p className="feature-description">
+                    Your personal AI that tells you what to do with your money.
+                    <br/><br/>
+                    ArthNiti analyzes your complete financial profile — including income, spending, loans, and investments — and provides smart, actionable financial recommendations.
+                    <br/><br/>
+                    Example insights:
+                  </p>
+                  <ul className="feature-benefits">
+                    <li>
+                      <div className="check-circle"><Check size={18} strokeWidth={3} /></div>
+                      <span>where to invest idle money</span>
+                    </li>
+                    <li>
+                      <div className="check-circle"><Check size={18} strokeWidth={3} /></div>
+                      <span>when to repay high-interest debt</span>
+                    </li>
+                    <li>
+                      <div className="check-circle"><Check size={18} strokeWidth={3} /></div>
+                      <span>how to optimize savings</span>
+                    </li>
+                  </ul>
+                  <p className="feature-footer-text">
+                    Instead of complex dashboards, the AI simply guides you with clear financial decisions.
+                  </p>
+                </div>
+              </div>
+
+              {/* Feature 2 - Reverse */}
+              <div className="feature-row reverse">
+                <div className="feature-content reveal-left">
+                  <h3 className="feature-heading">2️⃣ Smart Opportunity Detection</h3>
+                  <p className="feature-description">
+                    Automatically finds hidden financial opportunities.
+                    <br/><br/>
+                    ArthNiti scans your financial data and detects inefficiencies such as:
+                  </p>
+                  <ul className="feature-benefits">
+                    <li>
+                      <div className="check-circle"><Check size={18} strokeWidth={3} /></div>
+                      <span>idle cash sitting in savings accounts</span>
+                    </li>
+                    <li>
+                      <div className="check-circle"><Check size={18} strokeWidth={3} /></div>
+                      <span>high-interest debt draining your money</span>
+                    </li>
+                    <li>
+                      <div className="check-circle"><Check size={18} strokeWidth={3} /></div>
+                      <span>poor investment allocation</span>
+                    </li>
+                  </ul>
+                  <p className="feature-footer-text">
+                    The system then generates AI-powered strategies to improve your financial position.
+                  </p>
+                </div>
+                <div className="feature-visual reveal-right">
+                  <div className="visual-glow" />
+                  <Image src="/smart_opportunity_heatmap.png" alt="Smart Opportunity Detection" width={500} height={500} className="feature-heatmap" style={{ objectFit: 'contain', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))' }} />
+                </div>
+              </div>
+
+              {/* Feature 3 */}
+              <div className="feature-row">
+                <div className="feature-visual reveal-left">
+                  <div className="visual-glow" />
+                  <Image src="/predictive_cashflow.png" alt="Predictive Cash-Flow Intelligence" width={500} height={500} className="feature-heatmap" style={{ objectFit: 'contain', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))' }} />
+                </div>
+                <div className="feature-content reveal-right">
+                  <h3 className="feature-heading">3️⃣ Predictive Cash-Flow Intelligence</h3>
+                  <p className="feature-description">
+                    See your financial future before it happens.
+                    <br/><br/>
+                    Using spending patterns and income data, ArthNiti predicts your future financial balance and alerts you about potential risks.
+                    <br/><br/>
+                    Example:
+                  </p>
+                  <ul className="feature-benefits">
+                    <li>
+                      <div className="check-circle"><Check size={18} strokeWidth={3} /></div>
+                      <span>upcoming cash shortages</span>
+                    </li>
+                    <li>
+                      <div className="check-circle"><Check size={18} strokeWidth={3} /></div>
+                      <span>overspending patterns</span>
+                    </li>
+                    <li>
+                      <div className="check-circle"><Check size={18} strokeWidth={3} /></div>
+                      <span>savings potential</span>
+                    </li>
+                  </ul>
+                  <p className="feature-footer-text">
+                    This allows users to plan ahead and make smarter financial decisions.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ── MORE FEATURES (3D CARDS) ── */}
+          <section className="more-features" id="more-features">
+            <div className="section-header reveal">
+              <h2 className="section-title">The Complete Financial Ecosystem</h2>
+            </div>
+            <div className="more-features-grid">
               {[
-                { icon: "📊", title: "Financial Health Score", desc: "Real-time comprehensive analysis of your entire financial ecosystem with personalized insights." },
-                { icon: "🎯", title: "Opportunity Detection", desc: "Advanced ML algorithms that identify high-probability opportunities before others do." },
-                { icon: "💰", title: "Cash Flow Forecast", desc: "Predictive models with 95%+ accuracy to forecast your financial future with precision." },
-                { icon: "🤖", title: "AI Financial Copilot", desc: "24/7 intelligent guidance that learns your goals and guides every decision." },
+                { icon: "🧠", title: "Explainable AI Insights", desc: "Clear reasoning behind every AI recommendation." },
+                { icon: "📊", title: "Unified Financial Dashboard", desc: "All bank accounts, investments, and liabilities in one place." },
+                { icon: "💬", title: "AI Chat Advisor", desc: "Ask financial questions and get instant AI guidance." },
+                { icon: "🎯", title: "Financial Goal Planner", desc: "Plan savings for future goals like travel, education, or home." },
+                { icon: "🔔", title: "Smart Alerts", desc: "Real-time alerts for spending risks or financial opportunities." },
+                { icon: "🥧", title: "Investment Allocation Insights", desc: "See how your investments are distributed and optimized." },
+                { icon: "📉", title: "Spending Pattern Analysis", desc: "AI analyzes habits to improve financial discipline." },
+                { icon: "🛡️", title: "Risk Monitoring", desc: "Detects financial risks before they become problems." },
               ].map((f, i) => (
-                <div key={i} className="feature-card reveal">
-                  <div className="feature-icon">{f.icon}</div>
-                  <h3>{f.title}</h3>
+                <div key={i} className="mf-card reveal">
+                  <div className="mf-icon-3d">{f.icon}</div>
+                  <h4>{f.title}</h4>
                   <p>{f.desc}</p>
                 </div>
               ))}

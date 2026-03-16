@@ -38,19 +38,19 @@ export default function PhoneShowcase() {
         ease: "power4.out",
       })
       .from(phone1Ref.current, {
-        x: "-60vw",
-        y: "-80vh",
-        rotate: -45,
-        scale: 1.2,
+        y: "-50vh",
+        x: "-20vw",
+        rotate: -20,
+        scale: 0.8,
         opacity: 0,
         duration: 1.5,
         ease: "power3.out",
       }, "-=0.8")
       .from(phone2Ref.current, {
-        x: "60vw",
-        y: "-80vh",
-        rotate: 45,
-        scale: 1.2,
+        y: "-50vh",
+        x: "20vw",
+        rotate: 20,
+        scale: 0.8,
         opacity: 0,
         duration: 1.5,
         ease: "power3.out",
