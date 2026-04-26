@@ -6,6 +6,7 @@ import { Sun, Moon, Check } from "lucide-react";
 import PhoneShowcase from "@/components/PhoneShowcase";
 import Preloader from "@/components/Preloader";
 import Hero3D from "@/components/Hero3D";
+import InteractiveBrain from "@/components/InteractiveBrain";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -375,7 +376,7 @@ export default function Home() {
 
             {/* Hero Content */}
             <div className="hero-content" style={{ marginTop: "-60px" }}>
-              <div className="hero-badge">AI-Powered Financial Intelligence</div>
+
               <h1>
                 <span className="word">Turning</span>{" "}
                 <span className="word hero-gradient">Financial</span>{" "}
@@ -431,14 +432,14 @@ export default function Home() {
             </div>
 
             <div className="features-showcase">
-              {/* Feature 1 */}
+              {/* Feature 1 - Image Left, Text Right */}
               <div className="feature-row">
                 <div className="feature-visual reveal-left">
                   <div className="visual-glow" />
                   <Image src="/phone1_clear.png" alt="AI Financial Copilot" width={340} height={680} className="feature-phone" />
                 </div>
                 <div className="feature-content reveal-right">
-                  <h3 className="feature-heading">1️⃣ AI Financial Copilot</h3>
+                  <h3 className="feature-heading"><span className="feature-number">01</span> AI Financial Copilot</h3>
                   <p className="feature-description">
                     Your personal AI that tells you what to do with your money.
                     <br/><br/>
@@ -466,10 +467,10 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Feature 2 - Reverse */}
-              <div className="feature-row reverse">
+              {/* Feature 2 - Text Left, Image Right */}
+              <div className="feature-row">
                 <div className="feature-content reveal-left">
-                  <h3 className="feature-heading">2️⃣ Smart Opportunity Detection</h3>
+                  <h3 className="feature-heading"><span className="feature-number">02</span> Smart Opportunity Detection</h3>
                   <p className="feature-description">
                     Automatically finds hidden financial opportunities.
                     <br/><br/>
@@ -499,14 +500,14 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Feature 3 */}
+              {/* Feature 3 - Image Left, Text Right */}
               <div className="feature-row">
                 <div className="feature-visual reveal-left">
                   <div className="visual-glow" />
                   <Image src="/predictive_cashflow.png" alt="Predictive Cash-Flow Intelligence" width={500} height={500} className="feature-heatmap" style={{ objectFit: 'contain', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))' }} />
                 </div>
                 <div className="feature-content reveal-right">
-                  <h3 className="feature-heading">3️⃣ Predictive Cash-Flow Intelligence</h3>
+                  <h3 className="feature-heading"><span className="feature-number">03</span> Predictive Cash-Flow Intelligence</h3>
                   <p className="feature-description">
                     See your financial future before it happens.
                     <br/><br/>
@@ -577,21 +578,8 @@ export default function Home() {
                   <li>Multi-modal analysis of 10M+ data sources</li>
                 </ul>
               </div>
-              <div className="ai-visual reveal">
-                <div className="ai-logo">🧠</div>
-                <div className="ai-stats">
-                  {[
-                    { n: "95%", l: "Prediction Accuracy" },
-                    { n: "10M+", l: "Data Sources" },
-                    { n: "24/7", l: "Market Monitoring" },
-                    { n: "50+", l: "Risk Factors" },
-                  ].map((s, i) => (
-                    <div key={i} className="stat">
-                      <div className="stat-number">{s.n}</div>
-                      <div className="stat-label">{s.l}</div>
-                    </div>
-                  ))}
-                </div>
+              <div className="ai-visual reveal" style={{ padding: 0, overflow: "hidden" }}>
+                <InteractiveBrain theme={theme} />
               </div>
             </div>
           </section>

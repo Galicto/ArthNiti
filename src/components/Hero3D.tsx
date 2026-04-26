@@ -31,8 +31,8 @@ export default function Hero3D({ theme }: { theme: "light" | "dark" }) {
     const colors = new Float32Array(particleCount * 3);
     
     // Define palette based on theme
-    const primaryColor = new THREE.Color(isDark ? "#2563eb" : "#3b82f6");
-    const accentColor = new THREE.Color(isDark ? "#06b6d4" : "#22d3ee");
+    const primaryColor = new THREE.Color(isDark ? "#14b8a6" : "#0d9488");
+    const accentColor = new THREE.Color(isDark ? "#3b82f6" : "#2563eb");
 
     for (let i = 0; i < particleCount; i++) {
       // Cylinder-like distribution for a sweeping horizontal look
@@ -63,7 +63,7 @@ export default function Hero3D({ theme }: { theme: "light" | "dark" }) {
 
     // Dynamic Connections (Lines)
     const lineMaterial = new THREE.LineBasicMaterial({
-      color: isDark ? 0x1e40af : 0x93c5fd,
+      color: isDark ? 0x14b8a6 : 0x0d9488,
       transparent: true,
       opacity: 0.15,
       blending: THREE.AdditiveBlending
